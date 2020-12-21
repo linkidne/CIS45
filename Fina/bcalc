@@ -1,0 +1,30 @@
+#!/bin/bash
+# Calculator Launching Program
+# Noboru Emori
+# 12/18/2020
+
+# Source the functions from myFunctions file
+. ./myFunctions
+
+
+# Print a message after the source so error message will get separated. Also nice to see a friendly message
+echo "Welcome to the primitive calculator program"
+echo "This program only takes into account up to the thousandths digit"
+
+
+# Check to make sure there are right number of arguments
+check_args $*
+
+
+# Check both numbers coming in as float
+check_if_float $num1
+check_if_float $num2
+
+
+# Strip positive sign if necessary
+num1=$(strip_positive_sign $num1)
+num2=$(strip_positive_sign $num2)
+
+
+# Launch the menu
+calc_menu
