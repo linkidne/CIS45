@@ -1,0 +1,135 @@
+# This is my functions file
+# Noboru Emori
+# 11/28/2020
+#
+#
+#
+# Will back up to the directory below. Change this if desired
+function create_secret()
+{
+BACKUP_DIR=$HOME/.secret/.backup
+mkdir -p $BACKUP_DIR
+chmod 700 $BACKUP_DIR
+}
+#
+#
+# Menu function
+function menu()
+{
+
+echo "Welcome to cs 45 backup utility"
+echo "-------------------------------"
+echo -n "Hello $USER, what is your name?: "
+read name
+cat << MENUCAT
+                        MENU
+# Welcome $name, what would you like to do to the homework directory?
+-------------------------------------------------------------------
+     1. Backup
+     2. Compress
+     3. Compress and Backup
+     4. Quit
+-------------------------------------------------------------------
+MENUCAT
+}
+
+
+# Function for backing up but not compressing the data
+function backup_func()
+{
+echo "Will back up a chosen directory"
+ask_directory
+create_secret
+# copy files, no archiving
+echo "Backing up directory $backup_path"
+cp -ru "$backup_path" "$BACKUP_DIR"
+echo "Backed up directory $backup_path to $BACKUP_DIR"
+exit
+}
+
+
+# Function for just compresing but not backing up data
+function compress_func()
+{
+echo "Will compress (tar and gzip) a chosen directory"
+ask_directory
+archive_compress
+echo "Compressed $backup_path into $compressedname"
+exit
+}
+
+
+# Function for compressing and backing up
+function candb_func()
+{
+echo "Will compress (tar and gzip) a chosen directory, then back up"
+ask_directory
+archive_compress
+create_secret
+mv "$compressedname" "$BACKUP_DIR"
+echo "Compressed $backup_path into $compressedname and moved to $BACKUP_DIR"
+exit
+}
+
+
+# Function that asks for a directory, checks it, and puts it in $backup_path
+function ask_directory()
+{
+echo "What directory would you like to work on?"
+echo -n "Enter directory path: "
+read backup_path
+# Below evalutes the path such that $HOME, ~, etc. will be expanded and used
+backup_path="`eval echo $backup_path`"
+if [ -d $backup_path ]
+then
+  echo "Directory $backup_path found"
+else
+  echo "Directory $backup_path not found. Exiting Program"
+  exit 5
+fi
+}
+
+
+# Function to compress $backup_path into a timestamped backup_time.gz
+function archive_compress()
+{
+backup_filename="backup_$(date +%s).tar"
+echo "Compressing $backup_path into $backup_filename"
+tar cf $backup_filename $backup_path
+gzip $backup_filename
+compressedname="${backup_filename}.gz"
+}
+
+
+function readinput()
+{
+while true
+  do
+    echo -n "Please select a number to continue: "
+    read user_input
+    case $user_input in
+      1|1.|Backup|backup)
+      backup_func
+#      echo "Will back up your homework directory"
+#      break
+      ;;
+    2|2.|Compress|compress)
+      compress_func
+#      echo "Compress"
+#      break
+      ;;
+    3|3.|"Compress and Backup"|"compress and backup")
+      candb_func
+#      echo "Compress and Backup"
+#      break
+      ;;
+    4|4.|Quit|quit)
+      echo "Exiting Program."
+      exit 5
+      ;;
+  *)
+    echo "Invalid option. Please try again"
+    ;;
+  esac
+done
+}
