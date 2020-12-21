@@ -1,0 +1,126 @@
+Script started on Thu 08 Oct 2020 01:00:37 AM EDT
+[cs45aa17@mc-redhat01 ~]$ cd $HOME/homework
+[cs45aa17@mc-redhat01 homework]$ cp /tmp/week-5/* .
+[cs45aa17@mc-redhat01 homework]$ cd week-5
+[cs45aa17@mc-redhat01 week-5]$ sort -n months
+Apr
+Aug
+Dec
+Feb
+Jan
+Jul
+Jun
+Mar
+May
+Nov
+Oct
+Sep
+[cs45aa17@mc-redhat01 week-5]$ sort months numbers -o monbrs
+[cs45aa17@mc-redhat01 week-5]$ cat monbrs
+1
+10
+100
+15
+20
+25
+30
+35
+40
+5
+50
+60
+70
+80
+90
+Apr
+Aug
+Dec
+Feb
+Jan
+Jul
+Jun
+Mar
+May
+Nov
+Oct
+Sep
+[cs45aa17@mc-redhat01 week-5]$ grep '^r' /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+rtkit:x:172:172:RealtimeKit:/proc:/sbin/nologin
+radvd:x:75:75:radvd user:/:/sbin/nologin
+rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+[cs45aa17@mc-redhat01 week-5]$ grep -c '^r' /etc/passwd
+5
+[cs45aa17@mc-redhat01 week-5]$ grep -v 'cs45' /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+...
+hcampbell:x:1041:1043::/home/hcampbell:/bin/bash
+siah:x:1042:1044::/home/siah:/bin/bash
+mooks:x:1043:1045::/home/mooks:/bin/bash
+keith:x:1044:1046::/home/keith:/bin/bash
+mr-tester:x:1045:1047::/home/mr-tester:/bin/bash
+mrs-tester:x:1046:1048::/home/mrs-tester:/bin/bash
+jj:x:1048:9001::/home/jj:/bin/bash
+mickey:x:1049:9002:manager:/home/mickey:/bin/bash
+[cs45aa17@mc-redhat01 week-5]$ grep 'y$' months
+May
+[cs45aa17@mc-redhat01 week-5]$ grep 'root\|ly\|body' /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+operator:x:11:0:operator:/root:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+nfsnobody:x:65534:65534:Anonymous NFS User:/var/lib/nfs:/sbin/nologin
+ply:x:1000:1000:Patrick Ly:/home/ply:/bin/bash
+[cs45aa17@mc-redhat01 week-5]$ cat -Arregtxt
+I am line one$
+2 I am$
+100 is cost of ticket$
+  two spaces in begin$
+...
+55555566666$
+55555555  $
+55$
+[cs45aa17@mc-redhat01 week-5]$ grep '^[0-9]\{3\}-[0-9]\{3\}-[0-9]\{4\}$' regtxt
+408-334-9808
+[cs45aa17@mc-redhat01 week-5]$ grep '^a.*A$' regtxt
+aaaaaAA
+[cs45aa17@mc-redhat01 week-5]$ sed 's/\([0-9]\{3\}-[0-9]\{2\}-\)\([0-9]\{4\}\)/\1****/' regtxt2
+408-334-9808
+415-934-6808
+510-534-9808
+446-35-****
+346-35-****
+
+one tab here	-> one more here
+...
+[cs45aa17@mc-redhat01 week-5]$ sed 's/100/(&)/' regtxt1
+I am line one
+2 I am
+(100) is cost of ticket
+  two spaces in begin
+two spaces at end
+
+line with 5 spaces above
+jan
+feb
+[cs45aa17@mc-redhat01 week-5]$ grep '^[0-9]\{3\}-[0-9]\{3\}-[0-9]\{4\}$' regtxt2
+408-334-9808
+415-934-6808
+510-534-9808
+[cs45aa17@mc-redhat01 week-5]$ sed 's/\([0-9]\{3\}\)-\([0-9]\{3\}\)-\([0-9]\{4\}\)/\3-\2-\1/' regtxt2
+9808-334-408
+6808-934-415
+9808-534-510
+446-35-1088
+346-35-2089
+
+one tab here	-> one more here
+...
+[cs45aa17@mc-redhat01 week-5]$ exit
+
+Script done on Thu 08 Oct 2020 02:50:04 AM EDT

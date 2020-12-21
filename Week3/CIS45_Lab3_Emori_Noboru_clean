@@ -1,0 +1,223 @@
+Script started on Fri 25 Sep 2020 01:00:00 AM EDT
+[cs45aa17@mc-redhat01 lab-3]$ umask
+0002
+others'17@mc-redhat01 lab-3]$ echo 'umask of 0002 means by default files I create will take away 2,"or the write permission, from the
+umask of 0002 means by default files I create will take away 2, or the write permission, from the others
+[cs45aa17@mc-redhat01 lab-3]$ cd ../lec-3/
+[cs45aa17@mc-redhat01 lec-3]$ pwd
+/home/cs45aa17/homework/week-3/lec-3
+[cs45aa17@mc-redhat01 lec-3]$ mkdir dirx
+[cs45aa17@mc-redhat01 lec-3]$ ls -ld dirx
+drwxrwxr-x. 2 cs45aa17 cs45aa17 6 Sep 25 01:01 dirx
+[cs45aa17@mc-redhat01 lec-3]$ touch xfile
+[cs45aa17@mc-redhat01 lec-3]$ ls -l xfile
+-rw-rw-r--. 1 cs45aa17 cs45aa17 0 Sep 25 01:01 xfile
+[cs45aa17@mc-redhat01 lec-3]$ umask 033
+[cs45aa17@mc-redhat01 lec-3]$ touch zfile
+[cs45aa17@mc-redhat01 lec-3]$ ls -l zfile
+-rw-r--r--. 1 cs45aa17 cs45aa17 0 Sep 25 01:05 zfile
+[cs45aa17@mc-redhat01 lec-3]$ mkdir zdir
+[cs45aa17@mc-redhat01 lec-3]$ ls -ld zdir
+drwxr--r--. 2 cs45aa17 cs45aa17 6 Sep 25 01:06 zdir
+[cs45aa17@mc-redhat01 lec-3]$ groups mr-tester
+mr-tester : mr-tester
+[cs45aa17@mc-redhat01 lec-3]$ grep mr-tester /etc/group
+mr-tester:x:1047:
+[cs45aa17@mc-redhat01 lec-3]$ id -a mr-tester
+uid=1045(mr-tester) gid=1047(mr-tester) groups=1047(mr-tester)
+[cs45aa17@mc-redhat01 lec-3]$ newgrp - cs45
+Password:
+newgrp: failed to crypt password with previous salt: Invalid argument
+[cs45aa17@mc-redhat01 lec-3]$ newgrp - cs45
+Password:
+newgrp: failed to crypt password with previous salt: Invalid argument
+[cs45aa17@mc-redhat01 lec-3]$ exit
+
+Script done on Fri 25 Sep 2020 01:11:25 AM EDT
+Script started on Fri 25 Sep 2020 01:12:45 AM EDT
+[cs45aa17@mc-redhat01 lab-3]$ newgrp - mr-tester
+Password:
+newgrp: failed to crypt password with previous salt: Invalid argument
+[cs45aa17@mc-redhat01 lab-3]$ newgrp - cs45aa17r\
+[cs45aa17@mc-redhat01 ~]$ cd /home/cs45aa17/homework/week-3/lab-3/
+psw/home/cs45aa17/homework/week-3/lab-3/s45aa17/homework/week-3/lab-3/
+  PID TTY	   TIME CMD
+  528 pts/5    00:00:00 bash
+  641 pts/5    00:00:00 bash
+  706 pts/5    00:00:00 ps
+[cs45aa17@mc-redhat01 lab-3]$ exit
+logout
+[cs45aa17@mc-redhat01 lab-3]$ newgrp - cs45
+Password:
+newgrp: failed to crypt password with previous salt: Invalid argument
+[cs45aa17@mc-redhat01 lab-3]$ newgrp - cs45aa17
+[cs45aa17@mc-redhat01 ~]$ ps
+  PID TTY	   TIME CMD
+  528 pts/5    00:00:00 bash
+  757 pts/5    00:00:00 bash
+  812 pts/5    00:00:00 ps
+[cs45aa17@mc-redhat01 ~]$ exit
+logout
+[cs45aa17@mc-redhat01 lab-3]$ ps
+  PID TTY	   TIME CMD
+  528 pts/5    00:00:00 bash
+  819 pts/5    00:00:00 ps
+[cs45aa17@mc-redhat01 lab-3]$ newgrp cs45aa17
+[cs45aa17@mc-redhat01 lab-3]$ ps
+  PID TTY	   TIME CMD
+  528 pts/5    00:00:00 bash
+  840 pts/5    00:00:00 bash
+  895 pts/5    00:00:00 ps
+[cs45aa17@mc-redhat01 lab-3]$ exit
+exit
+[cs45aa17@mc-redhat01 lab-3]$ ps
+  PID TTY	   TIME CMD
+  528 pts/5    00:00:00 bash
+  899 pts/5    00:00:00 ps
+[cs45aa17@mc-redhat01 lab-3]$ touch mr-tfile
+[cs45aa17@mc-redhat01 lab-3]$ ls -l mr-tfile
+-rw-rw-r--. 1 cs45aa17 cs45aa17 0 Sep 25 01:15 mr-tfile
+[cs45aa17@mc-redhat01 lab-3]$ chgrp cs45 mr-tfile
+chgrp: changing group of ‘mr-tfile’: Operation not permitted
+[cs45aa17@mc-redhat01 lab-3]$ chgrp cs45aa17mmr-tfile
+[cs45aa17@mc-redhat01 lab-3]$ chgrp mr-testermmr-tfile
+chgrp: changing group of ‘mr-tfile’: Operation not permitted
+[cs45aa17@mc-redhat01 lab-3]$ touch gfilester mr-tfile
+[cs45aa17@mc-redhat01 lab-3]$ ls -l gxfile
+ls: cannot access gxfile: No such file or directory
+[cs45aa17@mc-redhat01 lab-3]$ touch gxfile
+[cs45aa17@mc-redhat01 lab-3]$ ls -l gxfile
+-rw-rw-r--. 1 cs45aa17 cs45aa17 0 Sep 25 01:16 gxfile
+[cs45aa17@mc-redhat01 lab-3]$ chgrp wheel gxfile
+chgrp: changing group of ‘gxfile’: Operation not permitted
+[cs45aa17@mc-redhat01 lab-3]$ test -f mr-tfile
+[cs45aa17@mc-redhat01 lab-3]$ echo $?
+0
+[cs45aa17@mc-redhat01 lab-3]$ mkdir mr-dir
+[cs45aa17@mc-redhat01 lab-3]$ ls -ld mr-dir
+drwxrwxr-x. 2 cs45aa17 cs45aa17 6 Sep 25 01:19 mr-dir
+[cs45aa17@mc-redhat01 lab-3]$ test -d mr-dir
+[cs45aa17@mc-redhat01 lab-3]$ echo $0
+bash
+[cs45aa17@mc-redhat01 lab-3]$ echo $?
+0
+[cs45aa17@mc-redhat01 lab-3]$ test 4 -lt 5
+[cs45aa17@mc-redhat01 lab-3]$ echo $?
+0
+[cs45aa17@mc-redhat01 lab-3]$ test 4 -lt 5 && echo "IGgot this!"
+bash: !": event not found
+[cs45aa17@mc-redhat01 lab-3]$ test 4?-lt 5 &&&echo 'I got this!'
+I got this!
+[cs45aa17@mc-redhat01 lab-3]$ test 2 -ne 3 && echo "Rock on"
+Rock on
+[cs45aa17@mc-redhat01 lab-3]$ test -d mr-dir && echo "mr-dir is a directory"
+mr-dir is a directory
+[cs45aa17@mc-redhat01 lab-3]$ mkdir permtest
+[cs45aa17@mc-redhat01 lab-3]$ cd permtest
+[cs45aa17@mc-redhat01 permtest]$ touch feedback1 feedback2 feedback3
+[cs45aa17@mc-redhat01 permtest]$ ls -lh
+total 0
+-rw-rw-r--. 1 cs45aa17 cs45aa17 0 Sep 25 01:21 feedback1
+-rw-rw-r--. 1 cs45aa17 cs45aa17 0 Sep 25 01:21 feedback2
+-rw-rw-r--. 1 cs45aa17 cs45aa17 0 Sep 25 01:21 feedback3
+[cs45aa17@mc-redhat01 permtest]$ vi feedback1
+"feedback1"k2L,043C0written																   ~																	 ~																       ~																     ~																	   ~																	 ~																       ~																     ~																	   ~																	 ~																       ~																     ~																	   ~																	 ~																       ~																     ~																	   ~																	 ~																       ~																     ~																	   ~																	 ~																       ~																     ~																	   ~																	 ~																       ~																     ~																	   ~																	 ~																       ~																     ~																	   ~																	 ~																       ~																     ~																	   ~																	 ~																       ~																     ~																	   ~																	 ~																       ~																     ~																	   ~																	 ~																       ~																     ~																	   ~																	 ~																       ~																     ~																	   ~																	 ~																       ~																     ~																	   ~																	 ~																       ~																     ~																	   ~																	 ~																       ~																     ~																	   ~																	 ~																       ~																     ~																	   ~																	 0,0-1All-- INSERT --0,1Alle1,2c3h4o56"7I89am12:34$506"72,1 e2c3h4o56"7P8r9a10ct2i3c4e56h7a8r9d20e1r2!34:5)6"76543:)"2,22All:wq
+[cs45aa17@mc-redhat01 permtest]$ cat feedback1
+echo "I am : $0"
+echo "Practice harder!:)"
+[cs45aa17@mc-redhat01 permtest]$ chmod +x feedback1
+[cs45aa17@mc-redhat01 permtest]$ ls -lh
+total 4.0K
+-rwxrwxr-x. 1 cs45aa17 cs45aa17 43 Sep 25 01:22 feedback1
+-rw-rw-r--. 1 cs45aa17 cs45aa17	 0 Sep 25 01:21 feedback2
+-rw-rw-r--. 1 cs45aa17 cs45aa17	 0 Sep 25 01:21 feedback3
+[cs45aa17@mc-redhat01 permtest]$ chmodho=rw-,g=r--,u=--- feedback2
+[cs45aa17@mc-redhat01 permtest]$ lsm-lhu=rw-,g=r--,o=--- feedback2
+total 4.0K
+-rwxrwxr-x. 1 cs45aa17 cs45aa17 43 Sep 25 01:22 feedback1
+-rw-r-----. 1 cs45aa17 cs45aa17	 0 Sep 25 01:21 feedback2
+-rw-rw-r--. 1 cs45aa17 cs45aa17	 0 Sep 25 01:21 feedback3
+[cs45aa17@mc-redhat01 permtest]$ chmodhu=rw-feedback2--- feedback2
+[cs45aa17@mc-redhat01 permtest]$ lsm-lhu=rw-,g=rw-,o=-w- feedback2
+total 4.0K
+-rwxrwxr-x. 1 cs45aa17 cs45aa17 43 Sep 25 01:22 feedback1
+-rw-rw----. 1 cs45aa17 cs45aa17	 0 Sep 25 01:21 feedback2
+-rw-rw-r--. 1 cs45aa17 cs45aa17	 0 Sep 25 01:21 feedback3
+[cs45aa17@mc-redhat01 permtest]$ chmodhu=rw-,g=r--,o=--- feedback2
+[cs45aa17@mc-redhat01 permtest]$ lsm-lhu=rw-,g=r--,o=--- feedback2
+total 4.0K
+-rwxrwxr-x. 1 cs45aa17 cs45aa17 43 Sep 25 01:22 feedback1
+-rw-r-----. 1 cs45aa17 cs45aa17	 0 Sep 25 01:21 feedback2
+-rw-rw-r--. 1 cs45aa17 cs45aa17	 0 Sep 25 01:21 feedback3
+[cs45aa17@mc-redhat01 permtest]$ chmod +w feedback2
+[cs45aa17@mc-redhat01 permtest]$ ls -lh
+total 4.0K
+-rwxrwxr-x. 1 cs45aa17 cs45aa17 43 Sep 25 01:22 feedback1
+-rw-rw----. 1 cs45aa17 cs45aa17	 0 Sep 25 01:21 feedback2
+-rw-rw-r--. 1 cs45aa17 cs45aa17	 0 Sep 25 01:21 feedback3
+[cs45aa17@mc-redhat0lsp-lhtest]$ chmod g-w,o-w feedback2
+total 4.0K
+-rwxrwxr-x. 1 cs45aa17 cs45aa17 43 Sep 25 01:22 feedback1
+-rw-r-----. 1 cs45aa17 cs45aa17	 0 Sep 25 01:21 feedback2
+-rw-rw-r--. 1 cs45aa17 cs45aa17	 0 Sep 25 01:21 feedback3
+[cs45aa17@mc-redhat01 permtest]$ chmod 754 feedback3
+[cs45aa17@mc-redhat01 permtest]$ ls -lh
+total 4.0K
+-rwxrwxr-x. 1 cs45aa17 cs45aa17 43 Sep 25 01:22 feedback1
+-rw-r-----. 1 cs45aa17 cs45aa17	 0 Sep 25 01:21 feedback2
+-rwxr-xr--. 1 cs45aa17 cs45aa17	 0 Sep 25 01:21 feedback3
+[cs45aa17@mc-redhat01 permtest]$ mkdir dir-tester
+[cs45aa17@mc-redhat01 permtest]$ mkdir dir-tester/dir-test2
+[cs45aa17@mc-redhat01 permtest]$ touch dir-tester/dir-test2/tester-file{1..4}
+[cs45aa17@mc-redhat01 permtest]$ ls dir-tester/dir-test2/*
+dir-tester/dir-test2/tester-file1  dir-tester/dir-test2/tester-file3
+dir-tester/dir-test2/tester-file2  dir-tester/dir-test2/tester-file4
+[cs45aa17@mc-redhat01 permtest]$ ls -lR dir-tester/
+dir-tester/:
+total 0
+drwxrwxr-x. 2 cs45aa17 cs45aa17 86 Sep 25 01:29 dir-test2
+
+dir-tester/dir-test2:
+total 0
+-rw-rw-r--. 1 cs45aa17 cs45aa17 0 Sep 25 01:29 tester-file1
+-rw-rw-r--. 1 cs45aa17 cs45aa17 0 Sep 25 01:29 tester-file2
+-rw-rw-r--. 1 cs45aa17 cs45aa17 0 Sep 25 01:29 tester-file3
+-rw-rw-r--. 1 cs45aa17 cs45aa17 0 Sep 25 01:29 tester-file4
+[cs45aa17@mc-redhat01 permtest]$ chmod -R 600 dir-tester/
+chmod: cannot access ‘dir-tester/dir-test2’: Permission denied
+[cs45aa17@mc-redhat01 permtest]$ lsm-lR-R 600 dir-tester/
+dir-tester/:
+ls: cannot access dir-tester/dir-test2: Permission denied
+total 0
+d????????? ? ? ? ?	      ? dir-test2
+ls: cannot open directory dir-tester/dir-test2: Permission denied
+[cs45aa17@mc-redhat01 permtest]$ chmod 700 dir-tester/
+[cs45aa17@mc-redhat01 permtest]$ lsm-lR700 dir-tester/
+dir-tester/:
+total 0
+drwxrwxr-x. 2 cs45aa17 cs45aa17 86 Sep 25 01:29 dir-test2
+
+dir-tester/dir-test2:
+total 0
+-rw-rw-r--. 1 cs45aa17 cs45aa17 0 Sep 25 01:29 tester-file1
+-rw-rw-r--. 1 cs45aa17 cs45aa17 0 Sep 25 01:29 tester-file2
+-rw-rw-r--. 1 cs45aa17 cs45aa17 0 Sep 25 01:29 tester-file3
+-rw-rw-r--. 1 cs45aa17 cs45aa17 0 Sep 25 01:29 tester-file4
+1@6dl-R0600tester/t0lsp-lRtest]$ hmodl700ir-tester/
+chmod: cannot access ‘dir-tester/dir-test2’: Permission denied
+[cs45aa17@mc-redhat01hmodm700t]$ lsm-lR-R 600 dir-tester/
+[1@75hmod@-R-600hls0-lRermtest]$ chmod 760 dir-tester/
+[cls5-lR7@mc-redhat01 per6test]$ chmod -R 700 dir-tester/
+dir-tester/:
+total 0
+drwx------. 2 cs45aa17 cs45aa17 86 Sep 25 01:29 dir-test2
+
+dir-tester/dir-test2:
+total 0
+-rwx------. 1 cs45aa17 cs45aa17 0 Sep 25 01:29 tester-file1
+-rwx------. 1 cs45aa17 cs45aa17 0 Sep 25 01:29 tester-file2
+-rwx------. 1 cs45aa17 cs45aa17 0 Sep 25 01:29 tester-file3
+-rwx------. 1 cs45aa17 cs45aa17 0 Sep 25 01:29 tester-file4
+[cs45aa17@mc-redhat01 permtest]$ exit
+
+Script done on Fri 25 Sep 2020 01:32:55 AM EDT

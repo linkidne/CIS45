@@ -1,0 +1,159 @@
+#!/bin/bash
+#Calculator Program
+#Noboru Emori
+#12/18/2020
+# This program should be able to handle inputs with
+# + or - in front of the number (either first or second numbers). Without will be assumed positive
+# decimals, with or without preceding 0
+
+
+check_args()
+# This is to check the number of arguments, and reassign the variables
+{
+if [ $# -eq 0 ];
+  then
+  echo "Usage: $0 num1 num2"
+  echo "This program will prompt user to add, multiply, divide, or subtract num1 and num2"
+  exit 4
+
+elif [ $# -ne 2 ];
+  then
+  echo "Please enter 2 numbers to perform operations on"
+  exit 5
+
+fi
+num1=$1
+num2=$2
+}
+
+
+
+check_if_float()
+# This will check that the arguments are float. It can also have preceding + or - signs
+{
+# Use regex match. Zero or one of +/-, at least one number. 
+# if ! [[ $1 =~ ^[+-]?[0-9]+([.][0-9]*)?$ ]]; OLD CODE THAT DIDN'T ALLOW DECIMALS WIHTOUT 0 in FRONT
+if ! [[ $1 =~ ^[+-]?([0-9]+([.][0-9]*)?|([.][0-9]*))$ ]];
+  then
+  echo "$1 is not a number. Exiting program."
+  exit 6
+
+else
+  echo "$1 is a number"
+
+fi
+}
+
+
+
+strip_positive_sign()
+# This function will strip the positive sign if the number starts with it
+{
+oldnumber=$1
+# Check if first char of string is +
+if [[ ${oldnumber:0:1} == "+" ]]
+  then  
+  # Stripping the first character, +, from the string
+  newnumber=${oldnumber:1}
+
+else
+  #no action to be taken
+  newnumber=$oldnumber
+fi
+
+echo $newnumber
+}
+
+
+
+bcalc_sum()
+# Sum Function. No tricks needed on this
+{
+echo "Adding"
+sum=$(echo "scale=2;$num1+$num2" | bc)
+echo $sum                        
+}
+
+
+
+bcalc_subract()
+# Subtraction Function. If second number is negative, need to turn into addition
+{
+echo "Subtracting"
+if [[ ${num2:0:1} == "-" ]]
+  then
+  # Second number starts with negative, so strip it and add
+  num2=${num2:1}
+  difference=$(echo "scale=3;$num1+$num2" | bc)
+
+else
+  # If not, just subtract
+  difference=$(echo "scale=3;$num1-$num2" | bc)
+
+fi
+
+echo $difference
+}
+
+
+
+bcalc_multiply()
+# Multiplication Function
+{
+echo "Multiplying"
+product=$(echo "scale=3;$num1*$num2" | bc)
+echo $product
+}
+
+
+
+bcalc_divide()
+# Division Function. Will catch if the second number is 0
+{
+echo "Dividing"
+# Check if the second number is 0. If it is, throw an error. Else execute division
+if [[ $num2 =~ (^0$)|(^0?.0+$) ]]
+then
+  echo "Cannot divide by 0! Quitting Program"
+  exit 10
+
+else
+  quotient=$(echo "scale=3;$num1/$num2" | bc)
+  echo $quotient
+
+fi
+}
+
+
+
+calc_menu()
+# this is the actual calculator menu.
+{
+# Display a message confirming the numbers
+echo "First number is $num1, Second number is $num2"
+# PS3 sets the user prompt in the following select function
+PS3="Please make a selection (1 through 5): "
+    select choice in add multiply divide subtract "Quit Program"
+        do
+          case $choice in
+             add)
+			bcalc_sum
+			;;
+	     multiply)
+                        bcalc_multiply
+                        ;;
+	     divide)
+			bcalc_divide
+                        ;;
+	     subtract)
+                        bcalc_subract 
+                        ;;
+	    "Quit Program")     echo "Thanks for using : $0"
+				exit
+				;;
+	     
+		*)
+			echo "You did not make a valid choice!...please select a number from 1 - 5."
+	  esac
+        done
+}

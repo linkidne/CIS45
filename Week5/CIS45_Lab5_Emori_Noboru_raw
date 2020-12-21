@@ -1,0 +1,198 @@
+Script started on Thu 08 Oct 2020 01:00:37 AM EDT
+]0;cs45aa17@mc-redhat01:~[?1034h[cs45aa17@mc-redhat01 ~]$ cp /tmp/wee[K[K[K[K[K[K[K[K[K[K[Kcd $HOME/homework
+]0;cs45aa17@mc-redhat01:~/homework[cs45aa17@mc-redhat01 homework]$ cp /tmp/week-5*[K/* .
+]0;cs45aa17@mc-redhat01:~/homework[cs45aa17@mc-redhat01 homework]$ cd week-5
+]0;cs45aa17@mc-redhat01:~/homework/week-5[cs45aa17@mc-redhat01 week-5]$ sort -n months
+Apr
+Aug
+Dec
+Feb
+Jan
+Jul
+Jun
+Mar
+May
+Nov
+Oct
+Sep
+]0;cs45aa17@mc-redhat01:~/homework/week-5[cs45aa17@mc-redhat01 week-5]$ sort months numbers -o monbrs
+]0;cs45aa17@mc-redhat01:~/homework/week-5[cs45aa17@mc-redhat01 week-5]$ cat monbrs
+1
+10
+100
+15
+20
+25
+30
+35
+40
+5
+50
+60
+70
+80
+90
+Apr
+Aug
+Dec
+Feb
+Jan
+Jul
+Jun
+Mar
+May
+Nov
+Oct
+Sep
+]0;cs45aa17@mc-redhat01:~/homework/week-5[cs45aa17@mc-redhat01 week-5]$ grep '^'[Kr' /etc/passwd
+[01;31m[Kr[m[Koot:x:0:0:root:/root:/bin/bash
+[01;31m[Kr[m[Kpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+[01;31m[Kr[m[Ktkit:x:172:172:RealtimeKit:/proc:/sbin/nologin
+[01;31m[Kr[m[Kadvd:x:75:75:radvd user:/:/sbin/nologin
+[01;31m[Kr[m[Kpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+]0;cs45aa17@mc-redhat01:~/homework/week-5[cs45aa17@mc-redhat01 week-5]$ grep -c '^r' /etc/passwd
+5
+]0;cs45aa17@mc-redhat01:~/homework/week-5[cs45aa17@mc-redhat01 week-5]$ s[Kgrep -v 'cs45' /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+ods:x:999:999:softhsm private keys owner:/var/lib/softhsm:/sbin/nologin
+pegasus:x:66:65:tog-pegasus OpenPegasus WBEM/CIM services:/var/lib/Pegasus:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+polkitd:x:998:997:User for polkitd:/:/sbin/nologin
+apache:x:48:48:Apache:/usr/share/httpd:/sbin/nologin
+libstoragemgmt:x:997:995:daemon account for libstoragemgmt:/var/run/lsm:/sbin/nologin
+colord:x:996:994:User for colord:/var/lib/colord:/sbin/nologin
+rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+saned:x:995:993:SANE scanner daemon user:/usr/share/sane:/sbin/nologin
+amandabackup:x:33:6:Amanda user:/var/lib/amanda:/bin/bash
+saslauth:x:994:76:Saslauthd user:/run/saslauthd:/sbin/nologin
+abrt:x:173:173::/etc/abrt:/sbin/nologin
+rtkit:x:172:172:RealtimeKit:/proc:/sbin/nologin
+pulse:x:171:171:PulseAudio System Daemon:/var/run/pulse:/sbin/nologin
+radvd:x:75:75:radvd user:/:/sbin/nologin
+chrony:x:993:988::/var/lib/chrony:/sbin/nologin
+qemu:x:107:107:qemu user:/:/sbin/nologin
+ntp:x:38:38::/etc/ntp:/sbin/nologin
+unbound:x:992:987:Unbound DNS resolver:/etc/unbound:/sbin/nologin
+gluster:x:991:986:GlusterFS daemons:/run/gluster:/sbin/nologin
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+sssd:x:990:984:User for sssd:/:/sbin/nologin
+geoclue:x:989:983:User for geoclue:/var/lib/geoclue:/sbin/nologin
+cockpit-ws:x:988:982:User for cockpit-ws:/nonexisting:/sbin/nologin
+usbmuxd:x:113:113:usbmuxd user:/:/sbin/nologin
+setroubleshoot:x:987:981::/var/lib/setroubleshoot:/sbin/nologin
+dirsrv:x:389:389:user for 389-ds-base:/usr/share/dirsrv:/sbin/nologin
+hsqldb:x:96:96::/var/lib/hsqldb:/sbin/nologin
+tomcat:x:53:53:Apache Tomcat:/usr/share/tomcat:/sbin/nologin
+pkiuser:x:17:17:Certificate System:/usr/share/pki:/sbin/nologin
+gdm:x:42:42::/var/lib/gdm:/sbin/nologin
+rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+nfsnobody:x:65534:65534:Anonymous NFS User:/var/lib/nfs:/sbin/nologin
+kdcproxy:x:388:388:IPA KDC Proxy User:/:/sbin/nologin
+ipaapi:x:387:387:IPA Framework User:/:/sbin/nologin
+gnome-initial-setup:x:386:386::/run/gnome-initial-setup/:/sbin/nologin
+pcp:x:385:385:Performance Co-Pilot:/var/lib/pcp:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+avahi:x:70:70:Avahi mDNS/DNS-SD Stack:/var/run/avahi-daemon:/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+oprofile:x:16:16:Special user account to be used by OProfile:/var/lib/oprofile:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+ply:x:1000:1000:Patrick Ly:/home/ply:/bin/bash
+hcampbell:x:1041:1043::/home/hcampbell:/bin/bash
+siah:x:1042:1044::/home/siah:/bin/bash
+mooks:x:1043:1045::/home/mooks:/bin/bash
+keith:x:1044:1046::/home/keith:/bin/bash
+mr-tester:x:1045:1047::/home/mr-tester:/bin/bash
+mrs-tester:x:1046:1048::/home/mrs-tester:/bin/bash
+jj:x:1048:9001::/home/jj:/bin/bash
+mickey:x:1049:9002:manager:/home/mickey:/bin/bash
+]0;cs45aa17@mc-redhat01:~/homework/week-5[cs45aa17@mc-redhat01 week-5]$ a[Ka[Kgrep 'y$' months
+Ma[01;31m[Ky[m[K
+]0;cs45aa17@mc-redhat01:~/homework/week-5[cs45aa17@mc-redhat01 week-5]$ grep 'root\|ly\|body' /etc/passwd
+[01;31m[Kroot[m[K:x:0:0:[01;31m[Kroot[m[K:/[01;31m[Kroot[m[K:/bin/bash
+operator:x:11:0:operator:/[01;31m[Kroot[m[K:/sbin/nologin
+no[01;31m[Kbody[m[K:x:99:99:No[01;31m[Kbody[m[K:/:/sbin/nologin
+nfsno[01;31m[Kbody[m[K:x:65534:65534:Anonymous NFS User:/var/lib/nfs:/sbin/nologin
+p[01;31m[Kly[m[K:x:1000:1000:Patrick Ly:/home/p[01;31m[Kly[m[K:/bin/bash
+]0;cs45aa17@mc-redhat01:~/homework/week-5[cs45aa17@mc-redhat01 week-5]$ cat regtxt-regtxtAregtxt regtxt
+I am line one$
+2 I am$
+100 is cost of ticket$
+  two spaces in begin$
+two spaces at end  $
+       $
+line with 5 spaces above$
+jan$
+feb$
+408-334-9808$
+446-35-1088$
+aa$
+aaaaaAA$
+a$
+XaaaA $
+55555566666$
+55555555  $
+55$
+]0;cs45aa17@mc-redhat01:~/homework/week-5[cs45aa17@mc-redhat01 week-5]$ a[Ka[Kgrep '^[0-9]\{3\}-[0-9]\{3\}-[0-9]\{4\}$' regtxt
+[01;31m[K408-334-9808[m[K
+]0;cs45aa17@mc-redhat01:~/homework/week-5[cs45aa17@mc-redhat01 week-5]$ grep '^a.*A$' regtxt
+[01;31m[KaaaaaAA[m[K
+]0;cs45aa17@mc-redhat01:~/homework/week-5[cs45aa17@mc-redhat01 week-5]$ sed 's/\([0-9]\{3\}-[0-9]\{2\}-\)\([0-9]\{4\}\)/\1****/' regtxt2
+408-334-9808
+415-934-6808
+510-534-9808
+446-35-****
+346-35-****
+		
+one tab here	-> one more here	
+aa
+aaaaaAA
+a
+XaaaA 
+55555566666
+55555555  
+55
+]0;cs45aa17@mc-redhat01:~/homework/week-5[cs45aa17@mc-redhat01 week-5]$ sed 's/100/(&)/' regtxt1
+I am line one
+2 I am
+(100) is cost of ticket
+  two spaces in begin
+two spaces at end  
+       
+line with 5 spaces above
+jan
+feb
+]0;cs45aa17@mc-redhat01:~/homework/week-5[cs45aa17@mc-redhat01 week-5]$ grep '^[0-9]\{3\}-[0-9]\{3\}-[0-9]\{4\}$' regtxt2
+[01;31m[K408-334-9808[m[K
+[01;31m[K415-934-6808[m[K
+[01;31m[K510-534-9808[m[K
+]0;cs45aa17@mc-redhat01:~/homework/week-5[cs45aa17@mc-redhat01 week-5]$ sed 's/\([0-9]\{3\}\)-\([0-9]\{3\}\)-\([0-9]\{4\}\)/\3-\2-\1/' regtxt2
+9808-334-408
+6808-934-415
+9808-534-510
+446-35-1088
+346-35-2089
+		
+one tab here	-> one more here	
+aa
+aaaaaAA
+a
+XaaaA 
+55555566666
+55555555  
+55
+]0;cs45aa17@mc-redhat01:~/homework/week-5[cs45aa17@mc-redhat01 week-5]$ exit
+
+Script done on Thu 08 Oct 2020 02:50:04 AM EDT

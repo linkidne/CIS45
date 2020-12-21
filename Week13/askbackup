@@ -1,0 +1,18 @@
+#!/bin/bash
+# 
+# Noboru Emori
+# 11/21/2020
+# Display a menu to ask the user for their name
+# Use a function call to call the menu fucntion from a file called myfunctions
+# after you get the users name, ask them if they want to backup a directory
+# BACKUP_DIR="$HOME/.secret/.backup"
+# permission of BACKUP_DIR is 700
+#
+#FUNCITON CALL OF THE MENU FUNCTION
+. ./myfunctions
+
+echo "Launching the Backup Utility. Ctrl+C to force quit"
+
+menu
+# After the menu goes successfully, go to readinput
+readinput
