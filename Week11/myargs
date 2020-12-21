@@ -1,0 +1,34 @@
+#!/bin/bash
+# Script name: myargs
+#
+# Date: 11/12/2020
+# Name: Code: Husayn Campbell; Comments: Noboru Emori
+
+# Script to test command line arguments
+if [ $# == 0 ] ; then # If there are no positional parameters (arguments), go inside this statement
+   echo "Usage:  $(basename $0) arg1 arg2 ... argn" \  # Print how to use the script; $(basename $0) prints myargs
+   1>&2 # Send any stdout into stderr
+   exit 1 # Exit with code 1, general unknown error. Can be used with echo $?
+fi
+
+echo "The name of this script is $0 ." # Prints the name of the file, which is $0
+echo "The arguments are $* " # Prints string with all of the positional parameters supplied when running command
+echo "The first argument is $1" # Prints the first positional parameter
+echo "The second argument is $2" # Prints the second positional parameters
+echo "The number of arguments is $#" # Prints the number of positional parameters
+
+previous_args=$* # Puts the list of positional parameters into a variable called previous_args
+
+set niel khail nobo # Sets a new list of positional parameters. $0 is still script, but $1 is niel, $2 is khail, $3 is nobo
+echo "All the positional parameters are $*" # Prints string with all of new positional parameters
+echo "The number of positional parameters is $#" # Prints the number of new positional paramaters (3, in this case)
+
+echo $previous_args # Prints the list of previously saved positional parameters
+
+set -- # Unsets all the positional parameters, clearing neil, kahil, and nobo in this case
+
+echo "Current args after -- are :  $*" # Prints current positional parameters; Should show nothing
+
+set $previous_args # sets positional parameters to the first list
+
+echo $* # Prints the positional parameters, which is the first list

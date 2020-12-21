@@ -1,0 +1,50 @@
+#!/bin/bash
+# Script Name: checkfiletype
+# 
+# Late Edit: 11/12/2020
+# Noboru Emori (within Husayn Campbell's Class)
+echo -n "Please select the file you want to check the type of: "
+read filetype
+
+# If directory and not a symlink
+if [ -d $filetype ] && [ ! -L $filetype ]
+ then echo "$filetype is a directory"
+  echo -n "Do you want to see the permissions of $filetype? "
+  read answer
+   if [ $answer = "yes" ]
+    then
+     echo "Doing listing of: $filetype"
+     ls -ld $fileytpe
+   fi
+# If regular file and not a symlink
+elif [ -f $filetype ] && [ ! -L $filetype ]
+ then
+  echo "$filetype is a file"
+  echo -n "Do you want to see the permissions of $filetype? "
+  read answer
+   if [ $answer = "yes" ]
+    then
+     echo "Doing listing of $filetype"
+     ls -lh $filetype
+   fi
+# If a symlink
+elif [ -L $filetype ]
+ then
+  echo "$filetype is a symbolic link"
+  fullpath=$(ls -l $filetype | awk '{print $NF}')
+# if a file and a symlink
+  if [ -f $fullpath ]
+   then
+    echo "The original file for $filetype is: $fullpath"
+    echo "The size of $fullpath is: $(ls -l $fullpath | awk '{print $5}') bytes"
+    echo "The $fullpath is owned by: $(ls -l $fullpath | awk '{print $3}')"
+# if a directory and symlink
+  else
+    echo "The original folder for $filetype is: $fullpath"
+    echo "The size of $fullpath is: $(ls -ld $fullpath | awk '{print $5}') bytes"
+    echo "The $fullpath is owned by: $(ls -ld $fullpath | awk '{print $3}')"
+  fi
+else
+# If not any of the above
+ echo "$filetype is not a file or directory or symbolic link"
+fi
